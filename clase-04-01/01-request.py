@@ -11,7 +11,7 @@ print(response.status_code)
 
 # ya averiguamos que es una lista
 informacion = response.json()
-
+s
 # sabemos que el primer elemento de esa lista
 # es un diccionario y tiene una clave "maps"
 
