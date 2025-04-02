@@ -1,0 +1,19 @@
+{% extends "hospital/base.html" %}
+
+
+{% block content %}
+
+    <h2>Estos son los pediatras disponibles:</h2>
+
+    <ul>
+        {% for pediatra in pediatras %}
+            <li>
+                <strong> {{ pediatra.apellido }}  {{ pediatra.nombre }}</strong><br>
+                Teléfono: {{ pediatra.telefono }}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}
+
+

@@ -5,8 +5,8 @@ from flask import Flask # pip install flask
 server = Flask("Hospital")
 
 
-@server.route("/oftalmologia")
-def oftalmologia():
+@server.route("/oftalmologia") # en django se llama: route/path
+def oftalmologia(): # en django se llama "view"
     return "Hola, tiene bien sus ojos?"
 
 @server.route("/pediatria")

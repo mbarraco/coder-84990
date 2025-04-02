@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital ABC - Pediatría</title>
+    <link rel="stylesheet" href="path_to_your_stylesheet.css">
+</head>
+<body>
+    <!-- Encabezado del hospital -->
+    <header>
+        <h1>Hospital ABC</h1>
+        <p>Atención pediátrica de calidad</p>
+    </header>
+
+    <!-- Menú de navegación -->
+    <nav>
+        <ul>
+            <li><a href="/">Inicio</a></li>
+            <li><a href="/pediatras">Pediatras</a></li>
+            <li><a href="/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido específico de cada página -->
+    <div id="content">
+        {% block content %}
+        <!-- El contenido de la página se insertará aquí -->
+        {% endblock %}
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>&copy; 2025 Hospital ABC. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
