@@ -40,6 +40,17 @@
             max-width: 800px;
             margin: 0 auto;
         }
+
+        .nav-section {
+            margin-top: 2rem;
+        }
+
+        .nav-title {
+            text-align: center;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
     </style>
 </head>
 <body>
@@ -54,6 +65,14 @@
         <a href="{% url 'hospital:lista-medico' %}">Lista de médicos</a>
         <a href="{% url 'hospital:buscar-medico' %}">Buscar médicos</a>
     </nav>
+
+    <div class="nav-section">
+        <div class="nav-title">⚙️ Funciones con CBV</div>
+        <nav>
+            <a href="{% url 'hospital:cbv-alta-medico' %}">CBV Alta</a>
+            <a href="{% url 'hospital:cbv-lista-medico' %}">CBV Lista</a>
+        </nav>
+    </div>
 
     <main>
         {% block elnombrequequiera %}

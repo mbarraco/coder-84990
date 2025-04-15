@@ -114,3 +114,49 @@ def buscar_medico(request):
         # si no es válido, volvemos a mostrar el form con errores
         contexto = {"formulario": HospitalMedicoBusquedaForm()}
         return render(request, 'hospital/buscar_medico.html', context=contexto)
+    
+
+def home(request):
+    return render(request, "hospital/home.html")
+
+# -----------------------------------------------------------------------------
+# Vistas basadas en clases (en inglés: Class Based Views, CBV)
+# -----------------------------------------------------------------------------
+
+from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView
+
+
+class HospitalMedicoListView(ListView):
+    model = HospitalMedico
+    template_name = 'hospital/cbv/medico-list.html'
+    context_object_name = 'medicos'
+
+
+class HospitalMedicoCreateView(CreateView):
+    model = HospitalMedico
+    fields = ['nombre', 'email', 'antiguedad']
+    template_name = "hospital/cbv/medico-create.html"
+    success_url = "/hospital/cbv/alta-medico"  # or reverse_lazy(...)
+
+
+class HospitalMedicoDetailView(DetailView):
+    model = HospitalMedico
+    template_name = "hospital/cbv/medico-detail.html"
+
+
+class HospitalMedicoUpdateView(UpdateView):
+    model = HospitalMedico
+    fields = ['nombre', 'email', 'antiguedad']
+    template_name = "hospital/cbv/medico-update.html"
+    success_url = "/hospital/cbv/lista-medico"
+
+
+from django.urls import reverse_lazy
+
+
+class HospitalMedicoDeleteView(DeleteView):
+    model = HospitalMedico
+    template_name = "hospital/cbv/medico-delete.html"
+    # success_url = "hospital/lista-medico"
+    success_url = reverse_lazy("hospital:cbv-lista-medico")
+

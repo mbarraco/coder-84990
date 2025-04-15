@@ -1,0 +1,15 @@
+{% extends 'hospital/base.html' %}
+
+{% block elnombrequequiera %}
+<h3 style="color: darkslategray; text-align: center;">👨‍⚕️ Detalle del médico</h3>
+
+<div style="max-width: 400px; margin: 2rem auto; text-align: center;">
+    <p><strong>Nombre:</strong> {{ object.nombre }}</p>
+    <p><strong>Email:</strong> {{ object.email }}</p>
+    <p><strong>Antigüedad:</strong> {{ object.antiguedad }} años</p>
+
+    <a href="{% url 'hospital:cbv-medico-editar' object.pk %}">✏️ Editar</a> |
+    <a href="{% url 'hospital:cbv-medico-eliminar' object.pk %}">🗑 Eliminar</a> |
+    <a href="{% url 'hospital:cbv-lista-medico' %}">🔙 Volver a la lista</a>
+</div>
+{% endblock %}

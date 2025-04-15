@@ -1,0 +1,15 @@
+{% extends 'hospital/base.html' %}
+
+{% block elnombrequequiera %}
+<h3 style="color: crimson; text-align: center;">⚠️ Confirmar eliminación</h3>
+
+<div style="max-width: 500px; margin: 2rem auto; text-align: center;">
+    <p>¿Estás seguro que deseas eliminar al médico <strong>{{ object.nombre }}</strong>?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="background: crimson; color: white; padding: 0.5rem 1rem;">🗑 Sí, eliminar</button>
+        <a href="{% url 'hospital:cbv-lista-medico' %}" style="margin-left: 1rem;">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
