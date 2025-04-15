@@ -1,0 +1,18 @@
+{% extends 'hospital/base.html' %}
+
+{% block elnombrequequiera %}
+
+<h3 style="color: cadetblue;">Todos los profesionales y las profesionales</h3>
+
+
+<div>
+    ----------------------------------------------------------
+    <ul>
+        {% for integrante in integrantes %}
+            <li>{{ integrante.nombre }} - {{integrante.email}} </li>
+            Antigüedad: {{integrante.antiguedad}} años
+            </br>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
