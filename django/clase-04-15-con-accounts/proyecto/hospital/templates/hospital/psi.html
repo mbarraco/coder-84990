@@ -1,0 +1,16 @@
+{% extends 'hospital/base.html' %}
+
+{% block elnombrequequiera %}
+
+<h3 style="color: cadetblue;">Psiquiatras</h3>
+
+
+<div>
+    ----------------------------------------------------------
+    <ul>
+        {% for integrante in integrantes %}
+            <li>{{ integrante.nombre }} - {{integrante.email}} </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

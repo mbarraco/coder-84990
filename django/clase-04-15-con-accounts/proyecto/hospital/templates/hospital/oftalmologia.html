@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sección de Oftalmología - Hospital XYZ</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        header {
+            background-color: #004d99;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header .logo img {
+            width: 100px;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        /* Sección principal */
+        main {
+            padding: 40px;
+            background-color: white;
+        }
+
+        h1, h2 {
+            color: #004d99;
+        }
+
+        .intro p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .servicios ul {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+
+        .contacto ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .contacto ul li {
+            font-size: 1.1em;
+        }
+
+        .contacto ul li:before {
+            content: "📞 ";
+            font-size: 1.2em;
+        }
+
+        /* Estilos de pie de página */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Diseño responsive */
+        @media (max-width: 768px) {
+            nav ul li {
+                display: block;
+                margin: 5px 0;
+            }
+
+            .intro, .servicios, .contacto {
+                padding: 20px;
+            }
+
+            footer {
+                position: static;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabecera -->
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="Hospital XYZ">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">Inicio</a></li>
+                <li><a href="#">Servicios</a></li>
+                <li><a href="#">Especialidades</a></li>
+                <li><a href="#">Contactos</a></li>
+                <li><a href="#">Urgencias</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Sección Principal -->
+    <main>
+        <section class="intro">
+            <h1>Bienvenido a la Sección de Oftalmología</h1>
+            <p>En nuestra sección de Oftalmología ofrecemos atención especializada para el diagnóstico y tratamiento de enfermedades relacionadas con la vista. Nuestro equipo de profesionales está comprometido con brindar atención de calidad para mejorar la salud visual de nuestros pacientes.</p>
+        </section>
+
+        <section class="servicios">
+            <h2>Servicios Oftalmológicos</h2>
+            <ul>
+                <li>Exámenes de la vista completos</li>
+                <li>Cirugía de cataratas</li>
+                <li>Tratamiento de glaucoma</li>
+                <li>Cirugía refractiva (LASIK)</li>
+                <li>Tratamiento de enfermedades de la retina</li>
+            </ul>
+        </section>
+
+        <section class="contacto">
+            <h2>Contáctanos</h2>
+            <p>Si tienes alguna pregunta o deseas agendar una cita, puedes contactarnos a través de los siguientes medios:</p>
+            <ul>
+                <li>Teléfono: (123) 456-7890</li>
+                <li>Email: oftalmologia@hospitalxyz.com</li>
+                <li>Dirección: Calle Ficticia 123, Ciudad, País</li>
+            </ul>
+        </section>
+    </main>
+
+    <!-- Pie de Página -->
+    <footer>
+        <p>&copy; 2025 Hospital XYZ. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
