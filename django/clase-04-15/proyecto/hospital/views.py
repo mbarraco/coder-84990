@@ -120,7 +120,7 @@ def home(request):
     return render(request, "hospital/home.html")
 
 # -----------------------------------------------------------------------------
-# Vistas basadas en clases (en inglés: Class Based Views, CBV)
+# Vistas basadas en Clases (en inglés: Class Based Views, CBV)
 # -----------------------------------------------------------------------------
 
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView
@@ -129,14 +129,14 @@ from django.views.generic import CreateView, UpdateView, DeleteView, DetailView,
 class HospitalMedicoListView(ListView):
     model = HospitalMedico
     template_name = 'hospital/cbv/medico-list.html'
-    context_object_name = 'medicos'
+    context_object_name = 'XXXZZZWWW'
 
 
 class HospitalMedicoCreateView(CreateView):
     model = HospitalMedico
     fields = ['nombre', 'email', 'antiguedad']
     template_name = "hospital/cbv/medico-create.html"
-    success_url = "/hospital/cbv/alta-medico"  # or reverse_lazy(...)
+    success_url = "/hospital/cbv/alta-medico" 
 
 
 class HospitalMedicoDetailView(DetailView):

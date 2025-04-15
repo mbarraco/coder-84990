@@ -4,12 +4,12 @@
 <h3 style="color: steelblue; text-align: center;">📑 Lista de médicos (CBV)</h3>
 
 <ul style="max-width: 600px; margin: 2rem auto; list-style: none; padding: 0;">
-    {% for medico in medicos %}
+    {% for medico in XXXZZZWWW %}
         <li style="margin-bottom: 1rem;">
             <strong>{{ medico.nombre }}</strong> ({{ medico.email }}) – {{ medico.antiguedad }} años de antigüedad<br>
-            <a href="{% url 'hospital:cbv-medico-detail' medico.pk %}">🔍 Ver</a> |
-            <a href="{% url 'hospital:cbv-medico-editar' medico.pk %}">✏️ Editar</a> |
-            <a href="{% url 'hospital:cbv-medico-eliminar' medico.pk %}">🗑 Eliminar</a>
+            <a href="{% url 'hospital:cbv-medico-detail' medico.pk %}"> 🔍 </a> |
+            <a href="{% url 'hospital:cbv-medico-editar' medico.pk %}"> ✏️ </a> |
+            <a href="{% url 'hospital:cbv-medico-eliminar' medico.pk %}"> 🗑 </a>
         </li>
     {% empty %}
         <li>No hay médicos registrados.</li>
