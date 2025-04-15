@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "farmacia",
     "hospital",
+    "accounts",
 ]
 
 MIDDLEWARE = [
@@ -123,3 +124,7 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# Clase 2025-04-15
+LOGIN_REDIRECT_URL = '/hospital/'  # o donde quieras que vayan al iniciar sesión
+LOGOUT_REDIRECT_URL = '/accounts/login/'  # opcional

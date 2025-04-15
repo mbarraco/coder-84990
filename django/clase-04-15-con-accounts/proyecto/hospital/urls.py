@@ -32,6 +32,7 @@ urlpatterns = [
     path("buscar-medico", buscar_medico, name="buscar-medico"),
     # clase 2014-04-15
     path("home", home, name="home"),
+    path('', home, name='root'),
     path("cbv/alta-medico", HospitalMedicoCreateView.as_view(), name="cbv-alta-medico"),
     path("cbv/lista-medico", HospitalMedicoListView.as_view(), name="cbv-lista-medico"),
     path("cbv/medico/<int:pk>", HospitalMedicoDetailView.as_view(), name="cbv-medico-detail"),
