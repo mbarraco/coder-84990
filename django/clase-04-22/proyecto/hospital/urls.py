@@ -16,26 +16,30 @@ from hospital.views import (
     HospitalMedicoDetailView,
     HospitalMedicoUpdateView,
     HospitalMedicoDeleteView,
+    # 2025-04-22
+    about
 )
 
 
 app_name = "hospital"
 
 urlpatterns = [
-    path("oftalmologia", oftalmologia, name="oftalmologia"),
-    path("pediatria", pediatria, name="pediatria"),
-    path("cirugia", cirugia, name="cirugia"),
-    path("psi", psi, name="psi"),
-    path("kinesiologia", kinesiologia, name="kinesiologia"),
-    path("alta-medico", alta_medico, name="alta-medico"),
-    path("lista-medico", lista_medico, name="lista-medico"),
-    path("buscar-medico", buscar_medico, name="buscar-medico"),
+    path("hospital/oftalmologia", oftalmologia, name="oftalmologia"),
+    path("hospital/pediatria", pediatria, name="pediatria"),
+    path("hospital/cirugia", cirugia, name="cirugia"),
+    path("hospital/psi", psi, name="psi"),
+    path("hospital/kinesiologia", kinesiologia, name="kinesiologia"),
+    path("hospital/alta-medico", alta_medico, name="alta-medico"),
+    path("hospital/lista-medico", lista_medico, name="lista-medico"),
+    path("hospital/buscar-medico", buscar_medico, name="buscar-medico"),
     # clase 2014-04-15
-    path("home", home, name="home"),
     path('', home, name='root'),
-    path("cbv/alta-medico", HospitalMedicoCreateView.as_view(), name="cbv-alta-medico"),
-    path("cbv/lista-medico", HospitalMedicoListView.as_view(), name="cbv-lista-medico"),
-    path("cbv/medico/<int:pk>", HospitalMedicoDetailView.as_view(), name="cbv-medico-detail"),
-    path("cbv/medico/<int:pk>/editar", HospitalMedicoUpdateView.as_view(), name="cbv-medico-editar"),
-    path("cbv/medico/<int:pk>/eliminar", HospitalMedicoDeleteView.as_view(), name="cbv-medico-eliminar"),
+    path('hospital/', home, name='root'),
+    path("hospital/cbv/alta-medico", HospitalMedicoCreateView.as_view(), name="cbv-alta-medico"),
+    path("hospital/cbv/lista-medico", HospitalMedicoListView.as_view(), name="cbv-lista-medico"),
+    path("hospital/cbv/medico/<int:pk>", HospitalMedicoDetailView.as_view(), name="cbv-medico-detail"),
+    path("hospital/cbv/medico/<int:pk>/editar", HospitalMedicoUpdateView.as_view(), name="cbv-medico-editar"),
+    path("hospital/cbv/medico/<int:pk>/eliminar", HospitalMedicoDeleteView.as_view(), name="cbv-medico-eliminar"),
+    # Clase 22 de Abril 
+    path("about", about, name="about")
 ]

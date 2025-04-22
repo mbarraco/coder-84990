@@ -7,10 +7,33 @@
         body {
             font-family: sans-serif;
             padding: 2rem;
+            position: relative; /* ADDED */
         }
 
         h2 {
             text-align: center;
+            color: #2c3e50;
+        }
+
+        .user-info {  /* ADDED */
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            text-align: right;
+            max-width: 200px;
+        }
+
+        .user-info img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid #3498db;
+        }
+
+        .user-info .user-details {
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
             color: #2c3e50;
         }
 
@@ -57,6 +80,19 @@
     <h2>🏥 Hospital de Córdoba</h2>
 
     {% if user.is_authenticated %}
+        <!-- ADDED: Avatar + name/email section -->
+        <div class="user-info">
+            {% with user.avatar as avatar %}
+                {% if avatar.imagen %}
+                    <img src="{{ avatar.imagen.url }}" alt="Avatar">
+                {% endif %}
+            {% endwith %}
+            <div class="user-details">
+                <strong>{{ user.first_name }} {{ user.last_name }}</strong><br>
+                <small>{{ user.email }}</small>
+            </div>
+        </div>
+
         <!-- Navegación principal -->
         <nav>
             <a href="{% url 'hospital:kinesiologia' %}">Kinesiología</a>
@@ -66,9 +102,9 @@
             <a href="{% url 'hospital:alta-medico' %}">+ Alta de médicos</a>
             <a href="{% url 'hospital:lista-medico' %}">Lista de médicos</a>
             <a href="{% url 'hospital:buscar-medico' %}">Buscar médicos</a>
+            <a href="{% url 'hospital:about' %}">Acerca de mí</a>
         </nav>
 
-        <!-- Navegación para vistas basadas en clases -->
         <div class="nav-section">
             <div class="nav-title">⚙️ Funciones con CBV</div>
             <nav>
@@ -83,6 +119,7 @@
         <div class="nav-title">🔐 Cuenta</div>
         <nav>
             {% if user.is_authenticated %}
+                <a href="{% url 'accounts:edit' %}">Editar perfil</a>
                 <a href="{% url 'accounts:logout' %}">Cerrar sesión ({{ user.username }})</a>
             {% else %}
                 <a href="{% url 'accounts:login' %}">Iniciar sesión</a>
@@ -91,10 +128,8 @@
         </nav>
     </div>
 
-    <!-- Contenido principal -->
     <main>
         {% block elnombrequequiera %}
-        <!-- El contenido de la página se insertará aquí -->
         {% endblock %}
     </main>
 </body>

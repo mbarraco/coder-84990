@@ -125,8 +125,9 @@ def home(request):
 
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView, ListView
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class HospitalMedicoListView(ListView):
+class HospitalMedicoListView(LoginRequiredMixin, ListView):
     model = HospitalMedico
     template_name = 'hospital/cbv/medico-list.html'
     context_object_name = 'medicos'
@@ -160,3 +161,7 @@ class HospitalMedicoDeleteView(DeleteView):
     # success_url = "hospital/lista-medico"
     success_url = reverse_lazy("hospital:cbv-lista-medico")
 
+
+
+def about(request):
+    return render(request, "hospital/about.html")

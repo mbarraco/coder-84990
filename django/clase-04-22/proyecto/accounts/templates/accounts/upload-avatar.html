@@ -1,0 +1,18 @@
+{% extends "hospital/base.html" %}
+
+{% block elnombrequequiera %}
+<h3 style="text-align: center; color: steelblue;">🖼️ Subir avatar</h3>
+
+<form method="post" enctype="multipart/form-data" style="max-width: 400px; margin: 2rem auto;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div style="text-align: center; margin-top: 1rem;">
+        <button type="submit">Subir avatar</button>
+    </div>
+</form>
+
+{% if user.avatar.imagen %}
+<p style="text-align: center;">Avatar actual:</p>
+<p style="text-align: center;"><img src="{{ user.avatar.imagen.url }}" width="100" style="border-radius: 50%;"></p>
+{% endif %}
+{% endblock %}

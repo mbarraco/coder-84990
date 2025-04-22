@@ -128,3 +128,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Clase 2025-04-15
 LOGIN_REDIRECT_URL = '/hospital/'  # o donde quieras que vayan al iniciar sesión
 LOGOUT_REDIRECT_URL = '/accounts/login/'  # opcional
+
+# Clase 22 de Abril 2025
+# settings.py
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
