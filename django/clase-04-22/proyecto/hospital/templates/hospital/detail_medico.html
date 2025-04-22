@@ -1,0 +1,16 @@
+{% extends 'hospital/base.html' %}
+
+{% block elnombrequequiera %}
+
+<h3 style="color: cadetblue;">Resultado de la busqueda</h3>
+
+
+<div>
+    ----------------------------------------------------------
+    <ul>
+        {% for medico in medicos %}
+            <li>{{ medico.nombre }} - {{medico.email}} </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

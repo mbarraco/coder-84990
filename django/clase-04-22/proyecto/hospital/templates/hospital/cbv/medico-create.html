@@ -1,0 +1,15 @@
+{% extends 'hospital/base.html' %}
+
+{% block elnombrequequiera %}
+
+<h3 style="color: seagreen; text-align: center;">📋 Alta de médico (Vista basada en clase)</h3>
+
+<form method="post" style="max-width: 500px; margin: 2rem auto;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div style="text-align: center; margin-top: 1rem;">
+        <button type="submit" style="padding: 0.5rem 1rem;">✅ Dar de alta</button>
+    </div>
+</form>
+
+{% endblock %}

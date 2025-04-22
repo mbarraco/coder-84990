@@ -1,0 +1,17 @@
+{% extends "hospital/base.html" %}
+
+{% block elnombrequequiera %}
+<h3 style="text-align: center; color: steelblue;">🔐 Iniciar sesión</h3>
+
+<form method="post" style="max-width: 400px; margin: 2rem auto;">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div style="text-align: center; margin-top: 1rem;">
+        <button type="submit">Ingresar</button>
+    </div>
+</form>
+
+<p style="text-align: center;">
+    ¿No tienes una cuenta? <a href="{% url 'accounts:signup' %}">Registrarse</a>
+</p>
+{% endblock %}

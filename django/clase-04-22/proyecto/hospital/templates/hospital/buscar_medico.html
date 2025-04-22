@@ -1,0 +1,14 @@
+{% extends 'hospital/base.html' %}
+
+{% block elnombrequequiera %}
+
+<h3 style="color: cadetblue;">Buscar medico:</h3>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <button type="submit"> Buscar</button>
+</form>
+
+
+{% endblock %}
