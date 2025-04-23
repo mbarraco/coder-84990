@@ -5,7 +5,10 @@
 
 <form method="post" enctype="multipart/form-data" style="max-width: 400px; margin: 2rem auto;">
     {% csrf_token %}
+    <h3>Información del usuario</h3>
     {{ user_form.as_p }}
+
+    <h3>Avatar</h3>
     {{ avatar_form.as_p }}
     <div style="text-align: center; margin-top: 1rem;">
         <button type="submit">Guardar cambios</button>

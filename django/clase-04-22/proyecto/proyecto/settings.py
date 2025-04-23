@@ -130,7 +130,6 @@ LOGIN_REDIRECT_URL = '/hospital/'  # o donde quieras que vayan al iniciar sesió
 LOGOUT_REDIRECT_URL = '/accounts/login/'  # opcional
 
 # Clase 22 de Abril 2025
-# settings.py
 import os
 
 MEDIA_URL = '/media/'

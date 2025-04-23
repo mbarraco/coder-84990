@@ -133,19 +133,56 @@ class HospitalMedicoListView(LoginRequiredMixin, ListView):
     context_object_name = 'medicos'
 
 
-class HospitalMedicoCreateView(CreateView):
+from django.views.generic import ListView
+from django.db.models import Q
+from .models import HospitalMedico
+
+class HospitalMedicoListFilteredView(LoginRequiredMixin, ListView):
+    model = HospitalMedico
+    template_name = 'hospital/cbv/medico-list-filtered.html'
+    context_object_name = 'medicos'
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+
+        # Extraer parámetros de búsqueda
+        nombre = self.request.GET.get('nombre', '')
+        email = self.request.GET.get('email', '')
+        antiguedad = self.request.GET.get('antiguedad', '')
+
+        if nombre:
+            queryset = queryset.filter(nombre__icontains=nombre)
+        if email:
+            queryset = queryset.filter(email__icontains=email)
+        if antiguedad:
+            queryset = queryset.filter(antiguedad=antiguedad)  # exact match
+
+        return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['filtros'] = {
+            'nombre': self.request.GET.get('nombre', ''),
+            'email': self.request.GET.get('email', ''),
+            'antiguedad': self.request.GET.get('antiguedad', ''),
+        }
+        return context
+
+
+
+class HospitalMedicoCreateView(LoginRequiredMixin,CreateView):
     model = HospitalMedico
     fields = ['nombre', 'email', 'antiguedad']
     template_name = "hospital/cbv/medico-create.html"
-    success_url = "/hospital/cbv/alta-medico"  # or reverse_lazy(...)
+    success_url = "/hospital/cbv/alta-medico"
 
 
-class HospitalMedicoDetailView(DetailView):
+class HospitalMedicoDetailView(LoginRequiredMixin, DetailView):
     model = HospitalMedico
     template_name = "hospital/cbv/medico-detail.html"
 
 
-class HospitalMedicoUpdateView(UpdateView):
+class HospitalMedicoUpdateView(LoginRequiredMixin, UpdateView):
     model = HospitalMedico
     fields = ['nombre', 'email', 'antiguedad']
     template_name = "hospital/cbv/medico-update.html"
@@ -155,7 +192,7 @@ class HospitalMedicoUpdateView(UpdateView):
 from django.urls import reverse_lazy
 
 
-class HospitalMedicoDeleteView(DeleteView):
+class HospitalMedicoDeleteView(LoginRequiredMixin, DeleteView):
     model = HospitalMedico
     template_name = "hospital/cbv/medico-delete.html"
     # success_url = "hospital/lista-medico"

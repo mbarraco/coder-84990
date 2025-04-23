@@ -6,7 +6,10 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.contrib.auth.mixins import LoginRequiredMixin
 
+from django.contrib.auth.decorators import login_required
 
+
+@login_required
 def logout_view(request):
     logout(request)
     return redirect('accounts:login')
@@ -28,14 +31,6 @@ from django.shortcuts import render
 from django.views import View
 
 
-# class UserChangeView(LoginRequiredMixin, UpdateView):
-#     model = User
-#     form_class = UserChangeForm
-#     template_name = 'accounts/change-user.html'
-#     success_url = reverse_lazy('accounts:login')  
-
-#     def get_object(self, queryset=None):
-#         return self.request.user
 
 class UserChangeView(LoginRequiredMixin, View):
     def get(self, request):

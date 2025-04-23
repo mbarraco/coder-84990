@@ -1,0 +1,65 @@
+{% extends 'hospital/base.html' %}
+
+{% block elnombrequequiera %}
+<div class="container my-4">
+    <h3 class="text-center text-primary mb-4"><i class="bi bi-clipboard-heart"></i> Lista de médicos</h3>
+
+    <form method="get" class="mb-3">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle shadow-sm bg-white rounded">
+                <thead class="table-light">
+                    <tr>
+                        <th>
+                            Nombre
+                            <input type="text" name="nombre" value="{{ filtros.nombre }}" class="form-control mt-1" placeholder="Buscar nombre">
+                        </th>
+                        <th>
+                            Email
+                            <input type="text" name="email" value="{{ filtros.email }}" class="form-control mt-1" placeholder="Buscar email">
+                        </th>
+                        <th>
+                            Antigüedad
+                            <input type="number" name="antiguedad" value="{{ filtros.antiguedad }}" class="form-control mt-1" placeholder="Años">
+                        </th>
+                        <th class="text-center">
+                            Acciones
+                            <div class="d-grid gap-1 mt-1">
+                                <button type="submit" class="btn btn-primary btn-sm btn-icon">
+                                    <i class="bi bi-search"></i> Filtrar
+                                </button>
+                                <a href="{% url 'hospital:cbv-lista-medico-filtrada' %}" class="btn btn-secondary btn-sm btn-icon">
+                                    <i class="bi bi-arrow-clockwise"></i> Limpiar
+                                </a>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for medico in medicos %}
+                        <tr>
+                            <td>{{ medico.nombre }}</td>
+                            <td>{{ medico.email }}</td>
+                            <td class="text-center">{{ medico.antiguedad }}</td>
+                            <td class="text-center">
+                                <a href="{% url 'hospital:cbv-medico-detail' medico.pk %}" class="btn btn-outline-info btn-sm btn-icon mb-1">
+                                    <i class="bi bi-eye"></i> Ver
+                                </a>
+                                <a href="{% url 'hospital:cbv-medico-editar' medico.pk %}" class="btn btn-outline-warning btn-sm btn-icon mb-1">
+                                    <i class="bi bi-pencil"></i> Editar
+                                </a>
+                                <a href="{% url 'hospital:cbv-medico-eliminar' medico.pk %}" class="btn btn-outline-danger btn-sm btn-icon mb-1">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </a>
+                            </td>
+                        </tr>
+                    {% empty %}
+                        <tr>
+                            <td colspan="4" class="text-center text-muted">No hay médicos registrados.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </form>
+</div>
+{% endblock %}

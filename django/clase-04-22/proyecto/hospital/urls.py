@@ -17,7 +17,8 @@ from hospital.views import (
     HospitalMedicoUpdateView,
     HospitalMedicoDeleteView,
     # 2025-04-22
-    about
+    about,
+    HospitalMedicoListFilteredView
 )
 
 
@@ -37,6 +38,7 @@ urlpatterns = [
     path('hospital/', home, name='root'),
     path("hospital/cbv/alta-medico", HospitalMedicoCreateView.as_view(), name="cbv-alta-medico"),
     path("hospital/cbv/lista-medico", HospitalMedicoListView.as_view(), name="cbv-lista-medico"),
+    path("hospital/cbv/lista-medico-filtrada", HospitalMedicoListFilteredView.as_view(), name="cbv-lista-medico-filtrada"),
     path("hospital/cbv/medico/<int:pk>", HospitalMedicoDetailView.as_view(), name="cbv-medico-detail"),
     path("hospital/cbv/medico/<int:pk>/editar", HospitalMedicoUpdateView.as_view(), name="cbv-medico-editar"),
     path("hospital/cbv/medico/<int:pk>/eliminar", HospitalMedicoDeleteView.as_view(), name="cbv-medico-eliminar"),

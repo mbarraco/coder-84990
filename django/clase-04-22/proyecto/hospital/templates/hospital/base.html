@@ -1,136 +1,154 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Hospital de Córdoba</title>
-    <style>
-        body {
-            font-family: sans-serif;
-            padding: 2rem;
-            position: relative; /* ADDED */
-        }
+  <meta charset="UTF-8">
+  <title>Hospital de Córdoba</title>
 
-        h2 {
-            text-align: center;
-            color: #2c3e50;
-        }
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-        .user-info {  /* ADDED */
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            text-align: right;
-            max-width: 200px;
-        }
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-        .user-info img {
-            width: 60px;
-            height: 60px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 2px solid #3498db;
-        }
+  <!-- Fuente moderna -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 
-        .user-info .user-details {
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-            color: #2c3e50;
-        }
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f8f9fa;
+      padding-top: 2rem;
+    }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-            margin: 1.5rem 0;
-        }
+    h2 {
+      text-align: center;
+      color: #0d6efd;
+      font-weight: 600;
+      margin-bottom: 2rem;
+    }
 
-        nav a {
-            text-decoration: none;
-            color: #3498db;
-            padding: 0.5rem 1rem;
-            border: 1px solid #3498db;
-            border-radius: 5px;
-            transition: background 0.2s, color 0.2s;
-        }
+    nav.navbar-custom {
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    }
 
-        nav a:hover {
-            background: #3498db;
-            color: white;
-        }
+    .navbar-nav .nav-link {
+      color: #0d6efd;
+      font-weight: 500;
+    }
 
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .navbar-nav .nav-link:hover {
+      color: #0a58ca;
+    }
 
-        .nav-section {
-            margin-top: 2rem;
-        }
+    .user-info {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      text-align: right;
+    }
 
-        .nav-title {
-            text-align: center;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-    </style>
+    .user-info img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 2px solid #0d6efd;
+    }
+
+    .user-details {
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      color: #343a40;
+    }
+
+    .nav-section {
+      margin: 2rem auto;
+      text-align: center;
+    }
+
+    .nav-title {
+      font-weight: 600;
+      color: #343a40;
+      margin-bottom: 0.5rem;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+      background-color: #fff;
+      border-radius: 0.5rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.03);
+    }
+  </style>
 </head>
 <body>
-    <h2>🏥 Hospital de Córdoba</h2>
 
-    {% if user.is_authenticated %}
-        <!-- ADDED: Avatar + name/email section -->
-        <div class="user-info">
-            {% with user.avatar as avatar %}
-                {% if avatar.imagen %}
-                    <img src="{{ avatar.imagen.url }}" alt="Avatar">
-                {% endif %}
-            {% endwith %}
-            <div class="user-details">
-                <strong>{{ user.first_name }} {{ user.last_name }}</strong><br>
-                <small>{{ user.email }}</small>
-            </div>
-        </div>
+  <h2><i class="bi bi-hospital"></i> Hospital de Córdoba</h2>
 
-        <!-- Navegación principal -->
-        <nav>
-            <a href="{% url 'hospital:kinesiologia' %}">Kinesiología</a>
-            <a href="{% url 'hospital:pediatria' %}">Pediatría</a>
-            <a href="{% url 'hospital:cirugia' %}">Cirugía</a>
-            <a href="{% url 'hospital:psi' %}">Psicología</a>
-            <a href="{% url 'hospital:alta-medico' %}">+ Alta de médicos</a>
-            <a href="{% url 'hospital:lista-medico' %}">Lista de médicos</a>
-            <a href="{% url 'hospital:buscar-medico' %}">Buscar médicos</a>
-            <a href="{% url 'hospital:about' %}">Acerca de mí</a>
-        </nav>
-
-        <div class="nav-section">
-            <div class="nav-title">⚙️ Funciones con CBV</div>
-            <nav>
-                <a href="{% url 'hospital:cbv-alta-medico' %}">CBV Alta</a>
-                <a href="{% url 'hospital:cbv-lista-medico' %}">CBV Lista</a>
-            </nav>
-        </div>
+  {% if user.is_authenticated %}
+  <div class="user-info">
+    {% if user.avatar and user.avatar.imagen %}
+      <img src="{{ user.avatar.imagen.url }}" alt="Avatar">
     {% endif %}
-
-    <!-- Navegación para autenticación -->
-    <div class="nav-section">
-        <div class="nav-title">🔐 Cuenta</div>
-        <nav>
-            {% if user.is_authenticated %}
-                <a href="{% url 'accounts:edit' %}">Editar perfil</a>
-                <a href="{% url 'accounts:logout' %}">Cerrar sesión ({{ user.username }})</a>
-            {% else %}
-                <a href="{% url 'accounts:login' %}">Iniciar sesión</a>
-                <a href="{% url 'accounts:signup' %}">Registrarse</a>
-            {% endif %}
-        </nav>
+    <div class="user-details">
+      <strong>{{ user.first_name }} {{ user.last_name }}</strong><br>
+      <small>{{ user.email }}</small>
     </div>
+  </div>
+  {% endif %}
 
-    <main>
-        {% block elnombrequequiera %}
-        {% endblock %}
-    </main>
+  <!-- Menú principal -->
+  <nav class="navbar navbar-expand-lg navbar-light navbar-custom px-3 mb-3">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-semibold text-primary" href="#">🏥</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% if user.is_authenticated %}
+          <li class="nav-item"><a class="nav-link" href="{% url 'hospital:kinesiologia' %}">Kinesiología</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'hospital:pediatria' %}">Pediatría</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'hospital:cirugia' %}">Cirugía</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'hospital:psi' %}">Psicología</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'hospital:alta-medico' %}">+ Alta de médicos</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'hospital:lista-medico' %}">Lista de médicos</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'hospital:buscar-medico' %}">Buscar médicos</a></li>
+          <li class="nav-item"><a class="nav-link" href="{% url 'hospital:about' %}">Acerca de mí</a></li>
+          {% endif %}
+        </ul>
+        <ul class="navbar-nav mb-2 mb-lg-0">
+          {% if user.is_authenticated %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:edit' %}"><i class="bi bi-person-circle"></i> Perfil</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:logout' %}"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a></li>
+          {% else %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:login' %}"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'accounts:signup' %}"><i class="bi bi-person-plus"></i> Registrarse</a></li>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Funciones CBV -->
+  {% if user.is_authenticated %}
+  <div class="nav-section">
+    <div class="nav-title">⚙️ Funciones con CBV</div>
+    <div class="d-flex justify-content-center flex-wrap gap-2">
+      <a class="btn btn-outline-primary btn-sm" href="{% url 'hospital:cbv-alta-medico' %}">CBV Alta</a>
+      <a class="btn btn-outline-primary btn-sm" href="{% url 'hospital:cbv-lista-medico' %}">CBV Lista</a>
+      <a class="btn btn-outline-primary btn-sm" href="{% url 'hospital:cbv-lista-medico-filtrada' %}">CBV Lista con filtros</a>
+    </div>
+  </div>
+  {% endif %}
+
+  <main>
+    {% block elnombrequequiera %}
+    {% endblock %}
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
